@@ -27,8 +27,8 @@ vN = xm*0;vS = xm*0;
 vE = y*0;vW = y*0;
 %------------------------------------------------------------------------
 %RHS
-Ubc = mu*([2*uS(2:end-1)' zeros(nx-1,ny-2) 2*uN(2:end-1)']/hx^2+[uW;zeros(nx-3,ny);uE]/hy^2);
-Vbc = mu*([vS' zeros(nx,ny-3) vN']/hx^2+[2*vW(2:end-1);zeros(nx-2,ny-1);2*vE(2:end-1)]/hy^2);
+Ubc = mu*([2*uS(2:end-1)' zeros(nx-1,ny-2) 2*uN(2:end-1)']/hy^2+[uW;zeros(nx-3,ny);uE]/hx^2);
+Vbc = mu*([vS' zeros(nx,ny-3) vN']/hy^2+[2*vW(2:end-1);zeros(nx-2,ny-1);2*vE(2:end-1)]/hx^2);
 divbc=reshape([-vS' zeros(nx,ny-2) vN']/hy+[-uW;zeros(nx-2,ny);uE]/hx,[],1);
 
 %Operators
