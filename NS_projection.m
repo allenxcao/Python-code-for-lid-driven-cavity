@@ -34,7 +34,7 @@ divbc=reshape([-vS' zeros(nx,ny-2) vN']/hy+[-uW;zeros(nx-2,ny);uE]/hx,[],1);
 %Operators
 Lu = speye((nx-1)*ny)/(dt)+mu*(kron(speye(ny),D(nx-1,hx,2))+kron(D(ny,hy,3),speye(nx-1))); %Laplacian operator for U
 Lv = speye((ny-1)*nx)/(dt)+mu*(kron(speye(ny-1),D(nx,hx,3))+kron(D(ny-1,hy,2),speye(nx))); %Laplacian operator for V
-Lp = -(kron(speye(ny),D(nx,hx,1))+kron(D(ny,hy,1),speye(nx))); Lp(1,1) = 3/2*Lp(1,1); %Laplacian operator for P
+Lp = -(kron(speye(ny),D(nx,hx,1))+kron(D(ny,hy,1),speye(nx))); Lp(1,1) = Lp(1,1) + 1/hx^2; %Laplacian operator for P
 GX=kron(speye(ny),spdiags([-ones(nx-1,1) ones(nx-1,1)], 0:1,nx-1,nx))/hx; %Gradient operator in x
 GY=spdiags([-ones(nx*ny,1) ones(nx*ny,1)], 0:nx:nx,nx*(ny-1),nx*ny)/hy; %Gradient operator in y
 
